@@ -5,9 +5,10 @@ import { Server } from "socket.io";
 import cors from "cors";
 
 import userController from "./src/controllers/user"
+import connectToMongo from "./src/config/db";
 
 const port = process.env.PORT || 3000
-
+connectToMongo()
 const app = express()
 const httpServer = http.createServer(app)
 

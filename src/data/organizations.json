@@ -42,7 +42,7 @@
     "budget": 10000000
   },
   {
-    "name": "IDF - West Bank",
+    "name": "IDF - WestBank",
     "resources": [
       {
         "name": "Iron Dome",
