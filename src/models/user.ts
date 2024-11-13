@@ -1,20 +1,28 @@
 import { model, Schema } from "mongoose";
 import { OriginEnum } from "../types/Enum/originEnum";
 import { AreaEnum } from "../types/Enum/areaEnum";
+import { Interception } from "../types/Enum/interception";
+import { IMissiles } from "../types/Enum/missilesEnum";
+import { StatusMissiles } from "../types/Enum/statusMissile";
 
 export interface RoketType {  
         name:string,
         amount: number
 }
 
-export interface IUser extends Document {
+
+
+
+export interface IUser {
     username:string
     password:string
     origin:OriginEnum
-    area?:AreaEnum
-    resources:RoketType []
+    resources:RoketType[]
     budget:number
+    area:AreaEnum |null
 }
+
+
 
 const userSchema = new Schema<IUser>({
     username:{
@@ -32,6 +40,7 @@ const userSchema = new Schema<IUser>({
     area:{
         type:String,
         enum:AreaEnum,
+        default:null,
         required:false
     },
     resources:{
@@ -45,4 +54,5 @@ const userSchema = new Schema<IUser>({
     }
 })
 
-export default model<IUser>('User',userSchema)
+
+export const UserSchema =  model<IUser>('User',userSchema)
