@@ -5,6 +5,7 @@ import { Server } from "socket.io";
 import cors from "cors";
 
 import userController from "./src/controllers/user"
+import launchController from "./src/controllers/launches"
 import connectToMongo from "./src/config/db";
 
 const port = process.env.PORT || 3000
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/user",userController)
+app.use("/api/launche",launchController)
 
 
 httpServer.listen(port, () => {
