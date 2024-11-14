@@ -14,7 +14,7 @@ export interface RoketType {
 
 
 export interface IUser {
-    _id:Schema.Types.ObjectId
+    _id?:Schema.Types.ObjectId
     username:string
     password:string
     origin:OriginEnum

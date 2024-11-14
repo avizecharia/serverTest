@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { RegisterDto } from "../types/Dto/register";
-import { createNewUser, userLoginService } from "../services/userService";
+import { createNewUser, getUserById, userLoginService } from "../services/userService";
 import { LoginDto } from "../types/Dto/loginDto";
 
 
@@ -28,3 +28,14 @@ export const loginRoute = async(req:Request<LoginDto>,res:Response)=>{
         res.status(400).json({err})
     }
 }
+
+export const getUserRoute = async(req:Request,res:Response) => {
+    try {
+        const result =  await getUserById(req.params.id)
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(400).json({err})
+    }
+}
+
+

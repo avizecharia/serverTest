@@ -6,9 +6,7 @@ import { ILaunche } from "../models/launche";
 
 
 export const createLaunchRoute = async(req:Request<ILaunche>,res:Response)=>{
-    try {
-        console.log(req.body,"hererer");
-        
+    try {  
         const result = await createLaunch(req.body)
         console.log(result);
         
@@ -25,7 +23,6 @@ export const grtYourLauncheRoute = async(req:Request,res:Response)=>{
     try {
         const result = await grtYourLauncheService(req.params.id)
         res.status(201).json(result)
-        
     } catch (err) {
         res.status(500).json({
             err
@@ -35,7 +32,13 @@ export const grtYourLauncheRoute = async(req:Request,res:Response)=>{
 }
 export const changeStatus = async(req:Request,res:Response)=>{
     try {
-        const result = await changeStatusService(req.params.id,req.body.newstatus,req.body.roketType)
+        console.log(req.params.roketType!,"hhhihihhiihihih");
+        const result = await changeStatusService(
+            req.params.id
+            ,req.body.newStatus
+            ,req.params.roketType,
+            req.params.userId!
+        )
         res.status(201).json(result)
         
     } catch (err) {

@@ -5,7 +5,7 @@ const router = Router()
 
 
 router.post("/launch" ,createLaunchRoute)
-router.post("/status/:id" ,changeStatus)
+router.post("/status/:id/:userId/:roketType" ,changeStatus)
 router.get("/getYourLaunche/:id" ,grtYourLauncheRoute)
 router.get("/getDefenceAttack/:area" ,getYourDeffenceAttackRoute)
 
