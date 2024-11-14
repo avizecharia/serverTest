@@ -7,6 +7,8 @@ import cors from "cors";
 import userController from "./src/controllers/user"
 import launchController from "./src/controllers/launches"
 import connectToMongo from "./src/config/db";
+import { getYourDeffenceAttackService } from "./src/services/launchService";
+import { handelSocketConnection } from "./src/sockets/io";
 
 const port = process.env.PORT || 3000
 connectToMongo()
@@ -19,6 +21,7 @@ export const io = new Server(httpServer,{
         methods: "*",
       },
 })
+io.on("connection",handelSocketConnection)
 
 app.use(express.json());
 app.use(cors());
@@ -30,4 +33,3 @@ app.use("/api/launche",launchController)
 httpServer.listen(port, () => {
     console.log(`Server started ,Visit "http://localhost:${port}"`);
   });
-  
